@@ -17,7 +17,10 @@
             <div class="logo">
                 <h1>Beebite <span>Natural</span></h1>
             </div>
-            <nav>
+            
+            <div class="menu-toggle" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
@@ -127,7 +130,8 @@
             </div>
         </div>
     </section>
-<section class="about-section" id="about">
+
+    <section class="about-section" id="about">
         <div class="container about-grid">
             <div class="about-image">
                 <img src="gallery1.jpg" alt="Beebite Natural Pure Honey Extraction">
@@ -243,84 +247,81 @@
         }
     </script>
 
+   <!-- OJAS NATURE PREMIUM STYLE FOOTER SECTION -->
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-brand">
-                <h2>BEEBITE NATURAL</h2>
-                <p>Bringing you the fine, unadulterated essence of nature's best wellness gifts directly to your home.</p>
+        <div class="footer-container">
+            <!-- Brand Column -->
+            <div class="footer-column">
+                <h3 style="color:#ffffff; letter-spacing: 1px;">Beebite <span style="color:#cca43b;">Natural</span></h3>
+                <p>We are dedicated to sourcing 100% pure, raw, and unpasteurized honey directly from organic fields. No chemical infusions, no added syrups—just genuine natural sweet goodness.</p>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/919027440549" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
             </div>
-            <div class="footer-links">
+
+            <!-- Quick Links Column -->
+            <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Blogs and Recipes</a></li>
-                    <li><a href="distributorship.html">Distributorship / Partner</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="index.html#products">Shop Honey</a></li>
+                    <li><a href="distributorship.html">Partner With Us</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
                 </ul>
             </div>
-            <div class="footer-links">
-                <h3>Policies</h3>
+
+            <!-- Trust Policies Column (Ojas Nature Special) -->
+            <div class="footer-column">
+                <h3>Our Policies</h3>
                 <ul>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="refund.html">Return & Refund Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Refund & Returns</a></li>
                 </ul>
             </div>
-            <div class="footer-contact">
+
+            <!-- Contact/Support Channels Column -->
+            <div class="footer-column">
                 <h3>Get In Touch</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Beebite Natural, India</p>
-                <p><i class="fas fa-phone"></i> +91 9027440549</p>
-                <p><i class="fas fa-envelope"></i> beebitehoney@gmail.com</p>
+                <ul class="footer-contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Beebite Natural Farms, India</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 9027440549</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@beebitenatural.com</span>
+                    </li>
+                </ul>
             </div>
         </div>
+
+        <!-- Trust Badges & Copyright Band -->
         <div class="footer-bottom">
             <p>Copyright © 2026 Beebite Natural. All rights reserved.</p>
+            <div class="payment-gateways">
+                <i class="fab fa-cc-visa" title="Visa"></i>
+                <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                <i class="fab fa-google-pay" title="Google Pay"></i>
+                <i class="fas fa-money-check-alt" title="UPI Enabled"></i>
+            </div>
         </div>
     </footer>
 
-    <div id="cartModal" class="cart-modal">
-        <div class="cart-modal-content">
-            <span class="close-modal" onclick="toggleCartModal()">&times;</span>
-            <h2>Your Shopping Cart</h2>
-            <div id="cart-items-container"></div>
-            <div class="cart-total-box">
-                <h3>Total Amount: ₹<span id="cart-total-price">0</span></h3>
-            </div>
-            
-            <form id="checkoutForm" onsubmit="sendOrder(event)">
-                <h3>Delivery Details</h3>
-                <input type="text" id="custName" placeholder="Your Full Name" required>
-                <input type="tel" id="custPhone" placeholder="Mobile Number" required>
-                <textarea id="custAddress" placeholder="Complete Delivery Address (with Pincode)" required></textarea>
-                <button type="submit" class="place-order-btn"><i class="fab fa-whatsapp"></i> Confirm & Order via WhatsApp</button>
-            </form>
-        </div>
-    </div>
-
+    <!-- SCRIPTS -->
     <script src="cart.js"></script>
     <script>
-        // Hero Slider Logic
-        let currentHeroIndex = 0;
-        const heroSlides = document.querySelectorAll('.hero-bg-slide');
-        function autoChangeHeroBackground() {
-            if (heroSlides.length === 0) return;
-            heroSlides[currentHeroIndex].classList.remove('active');
-            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
-            heroSlides[currentHeroIndex].classList.add('active');
-        }
-        setInterval(autoChangeHeroBackground, 4000);
-
-        // Product Images Slider Trackers
-        const sliderTrackers = {}; 
-        function moveSlider(sliderId, direction) {
-            const slider = document.getElementById(sliderId);
-            const images = slider.getElementsByTagName('img');
-            if (sliderTrackers[sliderId] === undefined) sliderTrackers[sliderId] = 0;
-            sliderTrackers[sliderId] += direction;
-            if (sliderTrackers[sliderId] >= images.length) sliderTrackers[sliderId] = 0;
-            if (sliderTrackers[sliderId] < 0) sliderTrackers[sliderId] = images.length - 1;
-            slider.style.transform = `translateX(-${sliderTrackers[sliderId] * 100}%)`;
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show-menu');
         }
     </script>
 </body>
