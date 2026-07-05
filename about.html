@@ -12,7 +12,12 @@
         <div class="top-bar"><p>100% Pure, Organic & Handmade Products delivered to your doorstep!</p></div>
         <div class="main-header">
             <div class="logo"><h1>Beebite <span>Natural</span></h1></div>
-            <nav>
+            
+            <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html" class="active">About Us</a></li>
@@ -29,21 +34,37 @@
         <p>Pure, Raw, and Unpasteurized Honey Crafted by Nature</p>
     </div>
 
-    <section class="content-wrapper container">
-        <div class="about-box">
-            <div class="about-text">
-                <h3>Bringing Nature's Best to Your Table</h3>
+    <section class="about-section">
+        <div class="container about-grid">
+            <div class="about-content">
+                <span class="sub-title">Who We Are</span>
+                <h2>Bringing Nature's Best to Your Table</h2>
                 <p>At Beebite Natural, we source 100% pure and natural honey directly from fields and organic farms. Our mission is to keep you healthy by providing unadulterated, raw honey free from artificial processing, laboratory chemicals, or added corn sugar syrups.</p>
                 <p>Every single batch undergoes quality assessments to ensure the authentic flavors and medicinal properties remain intact—the way nature intended.</p>
+                
+                <div class="about-features">
+                    <div class="about-feat-item"><i class="fas fa-check-circle"></i> 100% Raw & Unpasteurized</div>
+                    <div class="about-feat-item"><i class="fas fa-check-circle"></i> Direct From Organic Farms</div>
+                    <div class="about-feat-item"><i class="fas fa-check-circle"></i> No Added Sugars or Chemicals</div>
+                </div>
             </div>
-            <div>
+            <div class="about-image">
                 <img src="gallery1.jpg" alt="Beebite Natural Farm Image">
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container text-center"><p>Copyright © 2026 Beebite Natural. All rights reserved.</p></div>
+        <div class="container text-center">
+            <p>Copyright © 2026 Beebite Natural. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show-menu');
+        }
+    </script>
 </body>
 </html>
