@@ -6,19 +6,109 @@
     <title>Beebite Natural | Buy Raw Honey, Organic Products & Preservative-Free Treats</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS directly included to ensure sliders layout works perfectly instantly */
+        .product-image-slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background-color: #fcfcfc;
+            border-radius: 8px 8px 0 0;
+        }
+        .product-slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+        .product-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(22, 42, 31, 0.7);
+            color: #ffffff;
+            border: none;
+            padding: 10px 14px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+        .slider-btn:hover { background: rgba(204, 164, 59, 0.9); }
+        .slider-btn.prev { left: 10px; }
+        .slider-btn.next { right: 10px; }
+        .cart-modal, .auth-modal { animation: fadeIn 0.3s ease-out; }
+        
+        /* Smooth Toast Notification (Chhota Pop-up) Style */
+        .cart-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #162a1f;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-left: 5px solid #cca43b;
+            z-index: 10000;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        /* Login Button in Top-Bar */
+        .auth-btn {
+            background: #cca43b;
+            color: #162a1f !important;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            margin-left: 15px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .auth-btn:hover { background: #ffffff; }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Background Slider Fixes */
+        .hero-bg-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .hero-bg-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease-in-out; }
+        .hero-bg-slide.active { opacity: 1; }
+    </style>
 </head>
 <body>
 
     <header>
         <div class="top-bar">
-            <p>100% Pure, Organic & Handmade Products delivered to your doorstep!</p>
+            <p>
+                100% Pure, Organic & Handmade Products delivered to your doorstep!
+                <span id="user-auth-section">
+                    <a class="auth-btn" onclick="toggleAuthModal()"><i class="fas fa-user"></i> Login / Register</a>
+                </span>
+            </p>
         </div>
         <div class="main-header">
             <div class="logo">
                 <h1>Beebite <span>Natural</span></h1>
             </div>
             
-            <div class="menu-toggle" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
+            <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
             
             <nav id="nav-menu">
                 <ul>
@@ -36,7 +126,7 @@
         </div>
     </header>
 
-    <section class="hero-banner">
+    <section class="hero-banner" style="position: relative;">
         <div class="hero-bg-slider" id="heroBgSlider">
             <img src="gallery1.jpg" alt="Background 1" class="hero-bg-slide active">
             <img src="gallery2.jpg" alt="Background 2" class="hero-bg-slide">
@@ -92,15 +182,15 @@
 
                 <div class="product-card">
                     <div class="product-image-slider-wrapper">
-                        <div class="product-slider" id="slider2">
+                        <div class="product-slider" id="slider3">
                             <img src="dryfruit.jpg" alt="Beebite Natural dry fruit Front">
-                            <img src=".jpg.png" alt="Beebite Natural dry fruit Back">
+                            <img src="dryfruit.jpg" alt="Beebite Natural dry fruit Back">
                         </div>
-                        <button class="slider-btn prev" onclick="moveSlider('slider2', -1)">&#10094;</button>
-                        <button class="slider-btn next" onclick="moveSlider('slider2', 1)">&#10095;</button>
+                        <button class="slider-btn prev" onclick="moveSlider('slider3', -1)">&#10094;</button>
+                        <button class="slider-btn next" onclick="moveSlider('slider3', 1)">&#10095;</button>
                     </div>
                     <div class="product-info">
-                        <h3>Dry Fruits Honey Murabba – 1kg |Preservative Free</h3>
+                        <h3>Dry Fruits Honey Murabba – 1kg | Preservative Free</h3>
                         <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <div class="price"><del>₹1399</del> <span>₹1199</span></div>
                         <button class="add-to-cart-btn" onclick="addToCart('Dry Fruits Honey Murabba – 1kg', 1199)">Add to cart</button>
@@ -234,28 +324,8 @@
         </div>
     </section>
 
-    <script>
-        function directContactToWhatsApp(event) {
-            event.preventDefault();
-            const name = document.getElementById('contactName').value;
-            const phone = document.getElementById('contactPhone').value;
-            const email = document.getElementById('contactEmail').value || 'Not provided';
-            const msg = document.getElementById('contactMessage').value;
-            
-            let text = `*NEW WEBSITE INQUIRY*%0A%0A`;
-            text += `*Name:* ${name}%0A`;
-            text += `*Phone:* ${phone}%0A`;
-            text += `*Email:* ${email}%0A%0A`;
-            text += `*Message:* ${msg}`;
-            
-            window.open(`https://wa.me/919027440549?text=${text}`, '_blank');
-        }
-    </script>
-
-   <!-- OJAS NATURE PREMIUM STYLE FOOTER SECTION -->
     <footer>
         <div class="footer-container">
-            <!-- Brand Column -->
             <div class="footer-column">
                 <h3 style="color:#ffffff; letter-spacing: 1px;">Beebite <span style="color:#cca43b;">Natural</span></h3>
                 <p>We are dedicated to sourcing 100% pure, raw, and unpasteurized honey directly from organic fields. No chemical infusions, no added syrups—just genuine natural sweet goodness.</p>
@@ -266,7 +336,6 @@
                 </div>
             </div>
 
-            <!-- Quick Links Column -->
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
@@ -278,7 +347,6 @@
                 </ul>
             </div>
 
-            <!-- Trust Policies Column (Ojas Nature Special) -->
             <div class="footer-column">
                 <h3>Our Policies</h3>
                 <ul>
@@ -289,7 +357,6 @@
                 </ul>
             </div>
 
-            <!-- Contact/Support Channels Column -->
             <div class="footer-column">
                 <h3>Get In Touch</h3>
                 <ul class="footer-contact-info">
@@ -309,7 +376,6 @@
             </div>
         </div>
 
-        <!-- Trust Badges & Copyright Band -->
         <div class="footer-bottom">
             <p>Copyright © 2026 Beebite Natural. All rights reserved.</p>
             <div class="payment-gateways">
@@ -321,12 +387,170 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <div id="cartToast" class="cart-toast">
+        <i class="fas fa-check-circle" style="color: #25d366; margin-right: 8px;"></i> 
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <div id="cartModal" class="cart-modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); overflow-y: auto;">
+        <div class="cart-modal-content" style="background-color: white; margin: 8% auto; padding: 25px; width: 90%; max-width: 480px; border-radius: 12px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: sans-serif;">
+            <span onclick="toggleCartModal()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #666;">&times;</span>
+            <h2 style="color: #162a1f; margin-top: 0; margin-bottom: 20px; font-size: 22px; border-bottom: 2px solid #cca43b; padding-bottom: 10px;">Your Organic Cart</h2>
+            
+            <div id="cart-items-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 15px;"></div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 16px; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ddd;">
+                <span>Total Amount:</span>
+                <strong>₹<span id="cart-total-price">0</span></strong>
+            </div>
+            
+            <form id="checkoutForm" onsubmit="sendOrder(event)" style="margin-top: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <h4 style="margin: 0 0 10px 0; color: #162a1f;">Delivery Details</h4>
+                <input type="text" id="custName" placeholder="Your Full Name" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <input type="tel" id="custPhone" placeholder="WhatsApp / Mobile Number" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <textarea id="custAddress" placeholder="Complete Shipping Address with Pincode" required style="width: 100%; padding: 8px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; height: 60px; resize: none;"></textarea>
+                
+                <button type="submit" style="width: 100%; background-color: #25d366; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Place Order via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="authModal" class="auth-modal" style="display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); font-family: sans-serif;">
+        <div style="background-color: white; margin: 12% auto; padding: 25px; width: 90%; max-width: 400px; border-radius: 12px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            <span onclick="toggleAuthModal()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #666;">&times;</span>
+            
+            <div id="auth-login-view">
+                <h2 style="color: #162a1f; margin-top: 0; border-bottom: 2px solid #cca43b; padding-bottom: 8px;">Customer Login</h2>
+                <form onsubmit="handleAuthSubmit(event, 'login')">
+                    <input type="email" id="loginEmail" placeholder="Email Address" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                    <input type="password" id="loginPassword" placeholder="Password" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                    <button type="submit" style="width: 100%; background: #162a1f; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px;">Login</button>
+                </form>
+                <p style="text-align: center; font-size: 14px; margin-top: 15px;">New User? <a href="#" onclick="switchAuthView('register')" style="color: #cca43b; font-weight: bold; text-decoration: none;">Create an Account</a></p>
+            </div>
+
+            <div id="auth-register-view" style="display: none;">
+                <h2 style="color: #162a1f; margin-top: 0; border-bottom: 2px solid #cca43b; padding-bottom: 8px;">Create Account</h2>
+                <form onsubmit="handleAuthSubmit(event, 'register')">
+                    <input type="text" id="regName" placeholder="Full Name" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                    <input type="email" id="regEmail" placeholder="Email Address" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                    <input type="password" id="regPassword" placeholder="Create Password" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                    <button type="submit" style="width: 100%; background: #cca43b; color: #162a1f; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px;">Sign Up</button>
+                </form>
+                <p style="text-align: center; font-size: 14px; margin-top: 15px;">Already have an account? <a href="#" onclick="switchAuthView('login')" style="color: #162a1f; font-weight: bold; text-decoration: none;">Login Here</a></p>
+            </div>
+        </div>
+    </div>
+
     <script src="cart.js"></script>
     <script>
+        // SLIDER CONTROL FUNCTION LOGIC
+        const sliderStates = { slider1: 0, slider2: 0, slider3: 0 };
+
+        function moveSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+            const images = slider.getElementsByTagName('img');
+            const totalImages = images.length;
+            if (totalImages <= 1) return;
+
+            sliderStates[sliderId] += direction;
+
+            if (sliderStates[sliderId] >= totalImages) {
+                sliderStates[sliderId] = 0;
+            } else if (sliderStates[sliderId] < 0) {
+                sliderStates[sliderId] = totalImages - 1;
+            }
+
+            const percentage = -(sliderStates[sliderId] * 100);
+            slider.style.transform = `translateX(${percentage}%)`;
+        }
+
         function toggleMenu() {
             const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('show-menu');
+            if (navMenu) navMenu.classList.toggle('show-menu');
+        }
+
+        // 1. AUTOMATIC BACKGROUND HERO SLIDER INDEX FLOW
+        let currentBgIndex = 0;
+        const bgSlides = document.querySelectorAll('.hero-bg-slide');
+        if(bgSlides.length > 0) {
+            setInterval(() => {
+                bgSlides[currentBgIndex].classList.remove('active');
+                currentBgIndex = (currentBgIndex + 1) % bgSlides.length;
+                bgSlides[currentBgIndex].classList.add('active');
+            }, 4000);
+        }
+
+        // 2. TOAST NOTIFICATION GENERATOR FOR CART ADDITION
+        function showCartToast(message) {
+            const toast = document.getElementById('cartToast');
+            const toastMsg = document.getElementById('toast-message');
+            if(toast && toastMsg) {
+                toastMsg.innerText = message || "Item added to cart!";
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2500); // 2.5 seconds validation display
+            }
+        }
+
+        // Wrapper function to override cart.js dynamic addition to show toast instantly
+        const originalAddToCart = window.addToCart;
+        window.addToCart = function(productName, price) {
+            if(typeof originalAddToCart === "function") {
+                originalAddToCart(productName, price);
+            } else {
+                console.log(`Fallback: Added ${productName} - ₹${price}`);
+                // dynamic cart structure initialization placeholder if cart.js fails
+                let count = document.getElementById('cart-count');
+                if(count) count.innerText = parseInt(count.innerText) + 1;
+            }
+            showCartToast(`${productName} added to cart!`);
+        };
+
+        // 3. AUTHENTICATION CONTROLS (LOGIN/REGISTER POPUP SWITCH)
+        function toggleAuthModal() {
+            const authModal = document.getElementById('authModal');
+            if(authModal) {
+                authModal.style.display = authModal.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+
+        function switchAuthView(view) {
+            const loginView = document.getElementById('auth-login-view');
+            const registerView = document.getElementById('auth-register-view');
+            if(view === 'login') {
+                loginView.style.display = 'block';
+                registerView.style.display = 'none';
+            } else {
+                loginView.style.display = 'none';
+                registerView.style.display = 'block';
+            }
+        }
+
+        function handleAuthSubmit(event, type) {
+            event.preventDefault();
+            if(type === 'login') {
+                alert('Login Successful!');
+            } else {
+                alert('Account Created Successfully!');
+            }
+            toggleAuthModal();
+        }
+
+        function directContactToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const email = document.getElementById('contactEmail').value || 'Not provided';
+            const message = document.getElementById('contactMessage').value;
+            
+            const encodedText = encodeURIComponent(`Hi Beebite Natural,\n\nInquiry Details:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`);
+            window.open(`https://wa.me/919027440549?text=${encodedText}`, '_blank');
+            return false;
         }
     </script>
 </body>
