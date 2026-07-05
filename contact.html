@@ -12,7 +12,12 @@
         <div class="top-bar"><p>100% Pure, Organic & Handmade Products delivered to your doorstep!</p></div>
         <div class="main-header">
             <div class="logo"><h1>Beebite <span>Natural</span></h1></div>
-            <nav>
+            
+            <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
@@ -29,33 +34,78 @@
         <p>Drop your queries, and we will revert back within 24 business hours</p>
     </div>
 
-    <section class="content-wrapper container">
-        <div class="contact-grid">
+    <section class="contact-section">
+        <div class="container contact-grid">
             <div class="contact-info-panel">
-                <h3>Get in Touch</h3>
+                <span class="sub-title">Get in Touch</span>
+                <h2>We'd Love to Hear From You</h2>
                 <p>For instant solutions, orders, or delivery support timelines, contact us on our channels:</p>
-                <div class="c-item"><i class="fas fa-phone"></i> <span>+91 9027440549</span></div>
-                <div class="c-item"><i class="fas fa-envelope"></i> <span>beebitehoney@gmail.com</span></div>
-                <div class="c-item"><i class="fas fa-map-marker-alt"></i> <span>Beebite Natural, India</span></div>
+                
+                <div class="contact-methods">
+                    <div class="c-method-item">
+                        <div class="c-icon"><i class="fas fa-phone"></i></div>
+                        <div class="c-text">
+                            <h4>Phone / WhatsApp</h4>
+                            <p>+91 9027440549</p>
+                        </div>
+                    </div>
+                    <div class="c-method-item">
+                        <div class="c-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="c-text">
+                            <h4>Email Address</h4>
+                            <p>beebitehoney@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="c-method-item">
+                        <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="c-text">
+                            <h4>Our Location</h4>
+                            <p>Beebite Natural, India</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
             <div class="contact-form-panel">
+                <h3>Send Us a Message</h3>
                 <form onsubmit="sendContact(event)">
-                    <input type="text" id="cName" placeholder="Your Name" required>
-                    <input type="tel" id="cPhone" placeholder="Your Mobile Number" required>
+                    <div class="form-row">
+                        <input type="text" id="cName" placeholder="Your Name" required>
+                        <input type="tel" id="cPhone" placeholder="Your Mobile Number" required>
+                    </div>
                     <textarea id="cMsg" placeholder="Your Message or Business Inquiry" required></textarea>
-                    <button type="submit" class="form-submit-btn"><i class="fab fa-whatsapp"></i> Send Message on WhatsApp</button>
+                    
+                    <button type="submit" class="contact-submit-btn">
+                        <i class="fab fa-whatsapp"></i> Send Message on WhatsApp
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
+    <footer>
+        <div class="container text-center">
+            <p>Copyright © 2026 Beebite Natural. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show-menu');
+        }
+
         function sendContact(e) {
             e.preventDefault();
             let name = document.getElementById('cName').value;
             let phone = document.getElementById('cPhone').value;
             let msg = document.getElementById('cMsg').value;
-            let text = `*New Contact Inquiry*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Message:* ${msg}`;
+            
+            let text = `*New Contact Inquiry - BEEBITE NATURAL*%0A%0A` +
+                       `*Name:* ${encodeURIComponent(name)}%0A` +
+                       `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                       `*Message:* ${encodeURIComponent(msg)}`;
+                       
             window.open(`https://wa.me/919027440549?text=${text}`, '_blank');
         }
     </script>
