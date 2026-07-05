@@ -39,12 +39,14 @@ function updateCartUI() {
     cart.forEach(item => {
         const itemRow = document.createElement('div');
         itemRow.className = 'cart-item';
+        const safeName = item.name.replace(/'/g, "\\'"); 
+        
         itemRow.innerHTML = `
             <div>
                 <strong>${item.name}</strong><br>
                 <small>₹${item.price} x ${item.quantity}</small>
             </div>
-            <div class="cart-item-remove" onclick="removeFromCart('${item.name}')">
+            <div class="cart-item-remove" onclick="removeFromCart('${safeName}')">
                 <i class="fas fa-trash-alt"></i> Remove
             </div>
         `;
@@ -58,7 +60,7 @@ function toggleCartModal() {
     modal.classList.toggle('show-modal');
 }
 
-// 5. SEND FINALIZED DATA VIA WHATSAPP API
+// 5. SEND FINALIZED DATA VIA WHATSAPP API & RESET CART
 function sendOrder(event) {
     event.preventDefault();
     
@@ -72,13 +74,13 @@ function sendOrder(event) {
     const address = document.getElementById('custAddress').value;
     
     let orderDetails = `*NEW ORDER - BEEBITE NATURAL*%0A%0A`;
-    orderDetails += `*Customer Name:* ${name}%0A`;
-    orderDetails += `*Mobile:* ${phone}%0A`;
-    orderDetails += `*Delivery Address:* ${address}%0A%0A`;
+    orderDetails += `*Customer Name:* ${encodeURIComponent(name)}%0A`;
+    orderDetails += `*Mobile:* ${encodeURIComponent(phone)}%0A`;
+    orderDetails += `*Delivery Address:* ${encodeURIComponent(address)}%0A%0A`;
     orderDetails += `*--- ITEMS ORDERED ---*%0A`;
     
     cart.forEach((item, index) => {
-        orderDetails += `${index + 1}. ${item.name} (Qty: ${item.quantity}) - ₹${item.price * item.quantity}%0A`;
+        orderDetails += `${index + 1}. ${encodeURIComponent(item.name)} (Qty: ${item.quantity}) - ₹${item.price * item.quantity}%0A`;
     });
     
     let finalTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -87,4 +89,9 @@ function sendOrder(event) {
     
     const whatsappURL = `https://wa.me/919027440549?text=${orderDetails}`;
     window.open(whatsappURL, '_blank');
+
+    cart = [];
+    updateCartUI();
+    document.getElementById('checkoutForm').reset();
+    toggleCartModal(); 
 }
