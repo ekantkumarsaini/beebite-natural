@@ -12,7 +12,12 @@
         <div class="top-bar"><p>100% Pure, Organic & Handmade Products delivered to your doorstep!</p></div>
         <div class="main-header">
             <div class="logo"><h1>Beebite <span>Natural</span></h1></div>
-            <nav>
+            
+            <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
@@ -29,27 +34,45 @@
         <p>Join our retail and distribution network to grow your business sustainably</p>
     </div>
 
-    <section class="content-wrapper container">
-        <div class="dist-grid">
-            <div class="dist-card">
-                <i class="fas fa-store"></i>
-                <h4>Retail Shopkeeper</h4>
-                <p>Stock high-quality honey items inside your organic store or departmental shop with small inventory steps.</p>
+    <section class="distributor-section">
+        <div class="container">
+            <div class="distributor-grid">
+                <div class="dist-card">
+                    <i class="fas fa-store dist-icon"></i>
+                    <h3>Retail Shopkeeper</h3>
+                    <p>Stock high-quality honey items inside your organic store or departmental shop with small inventory steps.</p>
+                </div>
+                <div class="dist-card">
+                    <i class="fas fa-truck dist-icon"></i>
+                    <h3>Regional Distributor</h3>
+                    <p>Handle supply chains inside your city with dedicated territorial security and logistics support tracks.</p>
+                </div>
+                <div class="dist-card">
+                    <i class="fas fa-coins dist-icon"></i>
+                    <h3>High Profit Margins</h3>
+                    <p>Earn profitable commercial rewards with regular promotional brochures and guaranteed pure honey stocks.</p>
+                </div>
             </div>
-            <div class="dist-card">
-                <i class="fas fa-truck"></i>
-                <h4>Regional Distributor</h4>
-                <p>Handle supply chains inside your city with dedicated territorial security and logistics support tracks.</p>
+            
+            <div class="dist-action-box">
+                <a href="https://wa.me/919027440549?text=I%20am%20interested%20in%20Beebite%20Natural%20Distributorship" target="_blank" class="dist-btn">
+                    <i class="fab fa-whatsapp"></i> Chat for Distributorship Setup
+                </a>
             </div>
-            <div class="dist-card">
-                <i class="fas fa-coins"></i>
-                <h4>High Profit Margins</h4>
-                <p>Earn profitable commercial rewards with regular promotional brochures and guaranteed pure honey stocks.</p>
-            </div>
-        </div>
-        <div class="dist-btn-box">
-            <a href="https://wa.me/919027440549?text=I%20am%20interested%20in%20Beebite%20Natural%20Distributorship" target="_blank" class="btn" style="background:#25d366;"><i class="fab fa-whatsapp"></i> Chat for Distributorship Setup</a>
         </div>
     </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>Copyright © 2026 Beebite Natural. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show-menu');
+        }
+    </script>
 </body>
 </html>
