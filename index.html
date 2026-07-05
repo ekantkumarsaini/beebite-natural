@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beebite Natural | Buy Raw Honey, Organic Products & Preservative-Free Treats</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <p>100% Pure, Organic & Handmade Products delivered to your doorstep!</p>
+        </div>
+        <div class="main-header">
+            <div class="logo">
+                <h1>Beebite <span>Natural</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="distributorship.html">Distributorship</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="https://wa.me/919027440549" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
+                <a href="#" class="cart-icon" onclick="toggleCartModal()"><i class="fas fa-shopping-cart"></i> My Cart (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-bg-slider" id="heroBgSlider">
+            <img src="gallery1.jpg" alt="Background 1" class="hero-bg-slide active">
+            <img src="gallery2.jpg" alt="Background 2" class="hero-bg-slide">
+            <img src="gallery3.AVIF" alt="Background 3" class="hero-bg-slide">
+        </div>
+        <div class="banner-content">
+            <h2>Pure Honey & Natural Delights</h2>
+            <p>Handmade, Preservative-Free & Crafted with Love from Nature to Your Table.</p>
+            <a href="#products" class="btn">Shop Our Collection</a>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Beebite Natural - Our Products</h2>
+            <p class="section-subtitle">Browse the collection of our fresh products. You'll definitely find what you are looking for.</p>
+            
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-image-slider-wrapper">
+                        <div class="product-slider" id="slider1">
+                            <img src="1.jpg.png" alt="Beebite Natural Eucalyptus Honey Front">
+                            <img src="2.jpg.png" alt="Beebite Natural Eucalyptus Honey Back">
+                        </div>
+                        <button class="slider-btn prev" onclick="moveSlider('slider1', -1)">&#10094;</button>
+                        <button class="slider-btn next" onclick="moveSlider('slider1', 1)">&#10095;</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Eucalyptus Honey – 1 kg | Pure, No Sugar Added, Handmade</h3>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="price"><del>₹800</del> <span>₹600</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Eucalyptus Honey – 1 kg', 600)">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-slider-wrapper">
+                        <div class="product-slider" id="slider2">
+                            <img src="500gm 1.jpg.png" alt="Beebite Natural Eucalyptus Honey Front">
+                            <img src="500gm 2.jpg.png" alt="Beebite Natural Eucalyptus Honey Back">
+                        </div>
+                        <button class="slider-btn prev" onclick="moveSlider('slider2', -1)">&#10094;</button>
+                        <button class="slider-btn next" onclick="moveSlider('slider2', 1)">&#10095;</button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Eucalyptus Honey – 500 gm | Pure, No Sugar Added, Handmade</h3>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="price"><del>₹450</del> <span>₹350</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Eucalyptus Honey – 500 gm', 350)">Add to cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Dry fruit.jpg" alt="Dry Fruits Honey Murabba">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dry Fruits Honey Murabba – 1kg | Less Oil & Preservative Free</h3>
+                        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="price"><del>₹1399</del> <span>₹1199</span></div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Dry Fruits Honey Murabba – 1kg', 1199)">Add to cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container features-grid">
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-tint-slash"></i></div>
+                <h3>Less Oil / Pure</h3>
+                <p>Our traditional recipes focus strictly on health and premium purity without compromising on taste.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <h3>100% Natural</h3>
+                <p>Recipe ingredients and sourcing are 100% natural, giving products an authentic shelf-life safely.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-home"></i></div>
+                <h3>Handmade</h3>
+                <p>Crafted in precise, delicious home batches to keep you active and healthy all season long!</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-ban"></i></div>
+                <h3>No Preservatives</h3>
+                <p>Our products contain no artificial chemicals, synthesized preservatives, or laboratory colorings.</p>
+            </div>
+        </div>
+    </section>
+<section class="about-section" id="about">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="gallery1.jpg" alt="Beebite Natural Pure Honey Extraction">
+            </div>
+            <div class="about-content">
+                <span class="sub-title">Our Story</span>
+                <h2>Bringing Nature's Purest Sweetness To Your Table</h2>
+                <p>At <strong>Beebite Natural</strong>, we believe that nature holds the ultimate key to health and wellness. Founded with a vision to eliminate adulteration, we source 100% pure, raw, and unpasteurized honey directly from sustainable apiaries across India.</p>
+                <p>Unlike commercial brands, our honey is never chemically processed, ultra-filtered, or infused with artificial sugars. Every jar retains its natural enzymes, antioxidants, and authentic taste—exactly the way the bees crafted it.</p>
+                <div class="about-features">
+                    <div class="about-feat-item"><i class="fas fa-check-circle"></i> Directly From Apiaries</div>
+                    <div class="about-feat-item"><i class="fas fa-check-circle"></i> No Antibiotics / Chemicals</div>
+                    <div class="about-feat-item"><i class="fas fa-check-circle"></i> Lab Tested for Purity</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="distributor-section" id="distributorship">
+        <div class="container text-center">
+            <span class="sub-title text-gold">Grow With Us</span>
+            <h2>Become A Beebite Natural Partner</h2>
+            <p class="section-subtitle-dark">We are expanding our retail network across India. If you share our passion for premium, preservative-free organic food products, let's build a profitable business together.</p>
+            
+            <div class="distributor-grid">
+                <div class="dist-card">
+                    <div class="dist-icon"><i class="fas fa-store"></i></div>
+                    <h3>Retail Partner</h3>
+                    <p>Perfect for supermarkets, organic food stores, and local grocery shops looking to stock authentic, fast-moving honey brands.</p>
+                </div>
+                <div class="dist-card">
+                    <div class="dist-icon"><i class="fas fa-truck"></i></div>
+                    <h3>City Distributor</h3>
+                    <p>Exclusive territory rights for logistics-ready partners capable of handling bulk orders and distributing to regional retail points.</p>
+                </div>
+                <div class="dist-card">
+                    <div class="dist-icon"><i class="fas fa-percentage"></i></div>
+                    <h3>High Margins</h3>
+                    <p>Enjoy highly competitive trade margins, marketing support materials, and hassle-free transit guarantees on every batch.</p>
+                </div>
+            </div>
+            
+            <div class="dist-action-box">
+                <a href="https://wa.me/919027440549?text=Hi%20Beebite%20Natural,%20I%20am%20interested%20in%20taking%20your%20Distributorship.%20Kindly%20share%20the%20details." target="_blank" class="dist-btn">
+                    <i class="fab fa-whatsapp"></i> Apply for Distributorship
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container contact-grid">
+            <div class="contact-info-panel">
+                <span class="sub-title">Get In Touch</span>
+                <h2>We'd Love To Hear From You</h2>
+                <p>Have questions about our products, corporate orders, or need help with a custom order? Reach out, and our team will get back to you within 24 hours.</p>
+                
+                <div class="contact-methods">
+                    <div class="c-method-item">
+                        <div class="c-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="c-text">
+                            <h4>Call / WhatsApp</h4>
+                            <p>+91 9027440549</p>
+                        </div>
+                    </div>
+                    <div class="c-method-item">
+                        <div class="c-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="c-text">
+                            <h4>Email Address</h4>
+                            <p>beebitehoney@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="c-method-item">
+                        <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="c-text">
+                            <h4>Headquarters</h4>
+                            <p>Beebite Natural, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-panel">
+                <h3>Send Us A Quick Message</h3>
+                <form action="https://wa.me/919027440549" method="GET" target="_blank" onsubmit="return directContactToWhatsApp(event)">
+                    <div class="form-row">
+                        <input type="text" id="contactName" placeholder="Your Full Name" required>
+                        <input type="tel" id="contactPhone" placeholder="Mobile Number" required>
+                    </div>
+                    <input type="email" id="contactEmail" placeholder="Email Address (Optional)">
+                    <textarea id="contactMessage" placeholder="Write your message or inquiry details here..." required></textarea>
+                    <button type="submit" class="contact-submit-btn"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function directContactToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const email = document.getElementById('contactEmail').value || 'Not provided';
+            const msg = document.getElementById('contactMessage').value;
+            
+            let text = `*NEW WEBSITE INQUIRY*%0A%0A`;
+            text += `*Name:* ${name}%0A`;
+            text += `*Phone:* ${phone}%0A`;
+            text += `*Email:* ${email}%0A%0A`;
+            text += `*Message:* ${msg}`;
+            
+            window.open(`https://wa.me/919027440549?text=${text}`, '_blank');
+        }
+    </script>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h2>BEEBITE NATURAL</h2>
+                <p>Bringing you the fine, unadulterated essence of nature's best wellness gifts directly to your home.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Blogs and Recipes</a></li>
+                    <li><a href="distributorship.html">Distributorship / Partner</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="refund.html">Return & Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Beebite Natural, India</p>
+                <p><i class="fas fa-phone"></i> +91 9027440549</p>
+                <p><i class="fas fa-envelope"></i> beebitehoney@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2026 Beebite Natural. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-modal" onclick="toggleCartModal()">&times;</span>
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-box">
+                <h3>Total Amount: ₹<span id="cart-total-price">0</span></h3>
+            </div>
+            
+            <form id="checkoutForm" onsubmit="sendOrder(event)">
+                <h3>Delivery Details</h3>
+                <input type="text" id="custName" placeholder="Your Full Name" required>
+                <input type="tel" id="custPhone" placeholder="Mobile Number" required>
+                <textarea id="custAddress" placeholder="Complete Delivery Address (with Pincode)" required></textarea>
+                <button type="submit" class="place-order-btn"><i class="fab fa-whatsapp"></i> Confirm & Order via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        // Hero Slider Logic
+        let currentHeroIndex = 0;
+        const heroSlides = document.querySelectorAll('.hero-bg-slide');
+        function autoChangeHeroBackground() {
+            if (heroSlides.length === 0) return;
+            heroSlides[currentHeroIndex].classList.remove('active');
+            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
+            heroSlides[currentHeroIndex].classList.add('active');
+        }
+        setInterval(autoChangeHeroBackground, 4000);
+
+        // Product Images Slider Trackers
+        const sliderTrackers = {}; 
+        function moveSlider(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const images = slider.getElementsByTagName('img');
+            if (sliderTrackers[sliderId] === undefined) sliderTrackers[sliderId] = 0;
+            sliderTrackers[sliderId] += direction;
+            if (sliderTrackers[sliderId] >= images.length) sliderTrackers[sliderId] = 0;
+            if (sliderTrackers[sliderId] < 0) sliderTrackers[sliderId] = images.length - 1;
+            slider.style.transform = `translateX(-${sliderTrackers[sliderId] * 100}%)`;
+        }
+    </script>
+</body>
+</html>
