@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Beebite Natural</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar"><p>100% Pure, Organic & Handmade Products delivered to your doorstep!</p></div>
+        <div class="main-header">
+            <div class="logo"><h1>Beebite <span>Natural</span></h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#products">Products</a></li>
+                    <li><a href="distributorship.html">Distributorship</a></li>
+                    <li><a href="contact.html" class="active">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h2>Contact Our Team</h2>
+        <p>Drop your queries, and we will revert back within 24 business hours</p>
+    </div>
+
+    <section class="content-wrapper container">
+        <div class="contact-grid">
+            <div class="contact-info-panel">
+                <h3>Get in Touch</h3>
+                <p>For instant solutions, orders, or delivery support timelines, contact us on our channels:</p>
+                <div class="c-item"><i class="fas fa-phone"></i> <span>+91 9027440549</span></div>
+                <div class="c-item"><i class="fas fa-envelope"></i> <span>beebitehoney@gmail.com</span></div>
+                <div class="c-item"><i class="fas fa-map-marker-alt"></i> <span>Beebite Natural, India</span></div>
+            </div>
+            <div class="contact-form-panel">
+                <form onsubmit="sendContact(event)">
+                    <input type="text" id="cName" placeholder="Your Name" required>
+                    <input type="tel" id="cPhone" placeholder="Your Mobile Number" required>
+                    <textarea id="cMsg" placeholder="Your Message or Business Inquiry" required></textarea>
+                    <button type="submit" class="form-submit-btn"><i class="fab fa-whatsapp"></i> Send Message on WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function sendContact(e) {
+            e.preventDefault();
+            let name = document.getElementById('cName').value;
+            let phone = document.getElementById('cPhone').value;
+            let msg = document.getElementById('cMsg').value;
+            let text = `*New Contact Inquiry*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Message:* ${msg}`;
+            window.open(`https://wa.me/919027440549?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>
